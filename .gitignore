@@ -1,0 +1,6 @@
+audio_input/
+audio_output/
+*.mp3
+*.ogg
+*.opus
+.DS_Store
