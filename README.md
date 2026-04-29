@@ -1,6 +1,6 @@
 # Anki Audio Fixer
 
-Converts `.ogg` and `.opus` audio files into `.mp3` for better compatibility with Anki mobile apps.
+Converts `.ogg`,`.opus` and `.oga` audio files into `.mp3` for better compatibility with Anki mobile apps.
 
 ## Why
 
@@ -9,6 +9,6 @@ Some Anki mobile setups struggle with non-mp3 audio formats. This tool batch-con
 ## Features
 
 - Batch conversion of audio files
-- Supports `.ogg` and `.opus`
+- Supports `.ogg`,`.opus` and `.oga`
 - Keeps output in clean `.mp3` format
 - Safe filtering of unrelated files
