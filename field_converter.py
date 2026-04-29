@@ -12,16 +12,21 @@ def convert_audio(value):
     #any other cases will cause this return function to run
 
 def anki(action, params):
-    response = requests.post(url, json={
-        "action": action,
-        "version":6,
-        "params": params
-    })
-    return response.json()
+    try:
+        response = requests.post(url, json={
+            "action": action,
+            "version":6,
+            "params": params
+        })
+        return response.json()
+    except requests.exceptions.ConnectionError:
+        print("Is Anki Open?")
+        exit()
+#turns the response request into a function named anki
 
 url = "http://localhost:8765"
 
-deck_name = "sentencemining"
+deck_name = input("input deck name: ")
 
 note_ids = anki("findNotes", {"query": f"deck:{deck_name}"})["result"]
 
@@ -29,6 +34,7 @@ choice = input("would you like to proceed? ").lower()
 if choice == "yes":
 
     for note_id in note_ids:
+        
         notes = anki("notesInfo", {"notes": [note_id]})
         fields = notes["result"][0]["fields"]
         sentence_audio = fields["SentenceAudio"]["value"]
@@ -48,7 +54,6 @@ if choice == "yes":
                     }
                 }
             })
-
 elif choice == "no":
     pass
 else:
